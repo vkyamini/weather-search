@@ -1,0 +1,222 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+.InputHeader{
+    text-align: center;
+    padding: 20px;
+    margin: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  
+}#input{
+    margin: 10px;
+    width: 300px;
+    height: 30px;
+    border-radius: 12px;
+    border: 1px solid black;
+    color:black;
+    font-size: 17px;
+    font-family: 'Merriweather', serif;
+   
+}#submitbtn,
+#currentLocation{
+    font-family: 'Merriweather', serif;
+    margin-right: 3px;
+    margin-top: 10px;
+    padding: 5px;
+    background-color: none;
+    height: 32px;
+    border-radius: 12px;
+    border: 1px solid black;
+    /* color:black; */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    font-size: 17px;
+}#submitbtn{
+    width:90px;
+    font-size: 17px;
+}
+#submitbtn:hover,
+#currentLocation:hover{
+    background-color: none;
+    height: 35px;
+    border-radius: 12px;
+    border: 1px solid black;
+    font-weight: bolder;
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2);
+   
+}.currentweather{
+    display: flex;
+    flex-direction:column;
+    gap: 1rem;
+    align-items: center;
+   
+}.weathercard{
+  display: flex;
+  flex-direction:column;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 1.5rem 2rem;
+  /* text-align: center; */
+  /* color: black; */
+  width: 300px;
+  height:300px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}.cityname{
+    /* color: black; */
+    font-size:20px;
+    font-weight: bold;
+    margin: 1px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+.description{
+    font-size: 18px;
+    margin-top: 0;
+}.flexcol{
+    display: flex;
+    flex-direction: row;
+}.headingcard{
+    font-weight: bold;
+    /* color:black; */
+    font-size:14px;
+    font-family: 'Merriweather', serif;
+    margin-left: 2px;
+}#trial{
+    margin-left: 30px;
+}#humidty{
+    margin-left: 28px;
+}
+.carddis{
+   font-family: 'Merriweather', serif;
+   font-size: 15px;
+   /* color: #0f2027; */
+}.visibilityis{
+    margin-left: 80px;
+}#temp{
+  margin-bottom: 30px;
+  font-size: 65px;          
+  font-weight: bold;        
+  margin-left: 30px;
+  /* color: #111;  */
+  align-self: flex-end;
+}#cel{
+    font-size: 15px;
+}
+.icon-svg {
+    width: 15px;
+    height: 15px;
+    fill: #fff;
+  }
+.visibilitydis{
+    margin: 1px;
+    font-family: 'Merriweather', serif;
+    margin-left: 100px;
+}
+#displaysvg{
+    margin-top: 10px;
+    margin-left: 60px;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    
+    background: rgb(207, 204, 204);
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+.datetimedaydis{
+   text-align: center;
+   font-size: 30px;
+   padding: 40px;
+   font-family: 'Merriweather', serif;
+   font-weight: 600;
+   letter-spacing: 1px;
+}
+.morning {
+    background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* clear sky blue */
+    color: #0410f5;
+}
+.afternoon {
+    background: linear-gradient(to bottom, #ffe29f, #ffa99f); /* peach sunrise */
+    color: #fb6705;
+}
+.evening {
+    background: linear-gradient(to bottom, #fbc2eb, #a6c1ee); /* pink-purple dusk */
+    color: #020489;
+   
+}
+.night {
+    background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
+    color:rgb(200, 158, 247);
+}
+.center-svg {
+    display: block;
+    margin:auto;
+    position: relative;
+}
+.top-svg {
+    top: 0vh;
+}
+.bottom-svg {
+    top: 55vh;
+}
+.icon svg {
+    width: 80px;
+    height: 80px;
+  }
+.sun-rays {
+    transform-origin: center;
+    animation: spin 10s linear infinite;
+}
+.moon-glow {
+    animation: pulse 1s ease-in-out infinite alternate;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes pulse {
+    from { opacity: 0.7; transform: scale(1); }
+    to { opacity: 1; transform: scale(1.1); }
+  }
+  .freezing {
+    background: linear-gradient(to bottom, #74ebd5, #ACB6E5); /* icy electric blue */
+    color:#93291e;
+  }
+  
+  .cold {
+    background: linear-gradient(to bottom, #2980b9, #6dd5fa); /* deep blue to bright sky */
+    color: #ffffff;
+  }
+  
+  .coolt {
+    background: linear-gradient(to bottom, #43cea2, #185a9d); /* teal + ocean blue */
+    color: #ffffff;
+  }
+  
+  .pleasant {
+    background: linear-gradient(to bottom, #fdfbfb, #ebedee); /* light gray cloudlike */
+    color: #333333;
+  }
+  
+  .warm {
+    background: linear-gradient(to bottom, #f7971e, #ffd200); /* golden orange burst */
+    color: #4a1f00;
+  }
+  
+  .hot {
+    background: linear-gradient(to bottom, #f12711, #f5af19); /* fire orange to gold */
+    color: #fff0e6;
+  }
+  
+  .xhot {
+    background: linear-gradient(to bottom, #93291e, #ed213a); /* lava red danger */
+    color: #ffffff;
+  }
+  

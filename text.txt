@@ -1,0 +1,133 @@
+Nature lovers who want to plan their day based on current and upcoming weather conditions.
+
+📌 Core Features
+1. Location Detection
+📍 Detect city from current GPS coordinates (using OpenWeatherMap Reverse Geocoding)
+
+🔍 Allow manual city search with autocomplete (optional)
+
+2. Current Weather
+🌤 Display temperature, condition (rain, clouds, etc.)
+
+🧭 Show details like:
+
+1.Wind speed & direction
+2.Visibility
+3.Humidity
+4.Air quality (if available)
+5.UV index
+6.Sunrise & sunset
+7.Moon phase
+8.Min/max temperature for the day
+
+3. Daily Forecast
+⏰ Hourly breakdown (e.g., now, 5pm, 6pm…)
+
+🗓 Glimpse of next couple of days (2–7 day forecast)
+
+4. Personalized Suggestions
+🧥 What to wear
+
+🏃‍♀️ Activities to do
+
+🧘 Mood boosters or reminders
+
+🌿 Nature-friendly suggestions
+
+wireFrame
+
+[ Home Screen ]
+     |
+     |-- [ Search bar OR Use my location ]
+     |
+     |--> [ Weather Card View ]
+     |        - City + Time
+     |        - Current weather + suggestions
+     |        - Hourly Forecast
+     |        - Weather details (UV, sunrise, moon, etc.)
+     |
+     |--> [ Multi-Day Forecast (optional tab or scroll) ]
+
+
+<App>
+ ├── <Header />
+ │     ├── SearchBar
+ │     └── LocationButton
+ ├── <MainWeatherCard />
+ │     ├── CityName + Time
+ │     ├── WeatherIcon + Temp + Condition
+ │     └── WeatherRecommendation
+ ├── <WeatherDetails />
+ │     ├── Humidity, Wind, UV, Sunrise, Moon, etc.
+ ├── <HourlyForecast />
+ │     └── Scrollable hourly weather tiles
+ ├── <DailyForecast /> (optional)
+ │     └── 3-7 day weather summary
+ └── <FooterNav /> (optional for mobile)
+
+ 
+🎨 Wireframe - 1 (Text-Only Visual Mockup)
+
+╔════════════════════════════════╗
+║      📍 Mumbai, India         ║   ← City + location detection
+║      ☀️ 29°C - Sunny          ║   ← Current weather
+║      Expect high rain today   ║   ← Recommendation
+╚════════════════════════════════╝
+
+╔════════════════════════════════╗
+║ Wind: 11 km/h    UV: 5 (med)   ║
+║ Humidity: 40%    Sunrise: 6:11 ║
+║ Moon Phase: Waxing Crescent    ║
+╚════════════════════════════════╝
+
+╔══ Hourly Forecast Scroll View ═╗
+║  Now   | 5PM  | 6PM  | 7PM     ║
+║  ☀️29° | ☁️28°| 🌧️27°| 🌙26°  ║
+╚════════════════════════════════╝
+
+╔══ Optional: 3-7 Day Forecast ══╗
+║ Tue | Wed | Thu               ║
+║ 🌦️27°| ☀️30°| 🌧️26°           ║
+╚════════════════════════════════╝
+
+
+
+
+🎨 Wireframe - 2 (Text-Only Visual Mockup)
+ 
+╔════════════════════════════════╗
+║ 📍 Mumbai, India     🕒 4:45 PM║   ← City + time
+║ ☀️ Sunny     🌡️ 29°C (Feels 32°)║   ← Weather condition + feels like
+║ "Expect high rain today."     ║   ← Daily suggestion
+╚════════════════════════════════╝
+
+╔════════════ Weather Stats ════════════╗
+║ 🌬️ Wind:      11 km/h                ║
+║ 💧 Humidity:  40%                    ║
+║ 👀 Visibility: 6.2 mi                ║
+║ 🔼 Pressure:   1013 hPa              ║
+║ 🌡️ Dew Point: 21°C                  ║
+║ 🔆 UV Index:  5 (Moderate)           ║
+║ 🏭 AQI:        82 (Moderate)         ║
+╚══════════════════════════════════════╝
+
+╔════ Sun & Moon Times ════╗
+║ 🌅 Sunrise:   6:11 AM    ║
+║ 🌇 Sunset:    6:58 PM    ║
+║ 🌙 Moonrise:  8:21 PM    ║
+║ 🌘 Moonset:   6:34 AM    ║
+║ 🌒 Moon Phase: Waxing Crescent ║
+╚══════════════════════════╝
+
+╔══ Hourly Forecast Scroll View ═╗
+║  Now   | 5PM  | 6PM  | 7PM     ║
+║  ☀️29° | ☁️28°| 🌧️27°| 🌙26°  ║
+║  0%    | 10%  | 80%  | 50%     ║   ← Precipitation %
+╚════════════════════════════════╝
+
+╔══ 3-Day Forecast (Optional) ══╗
+║ Tue   | Wed   | Thu           ║
+║ 🌦️27° | ☀️30° | 🌧️26°         ║
+║ 80%   | 10%   | 90%           ║   ← Precipitation %
+╚════════════════════════════════╝
+

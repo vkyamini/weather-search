@@ -5,18 +5,28 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WEATHER FORCAST</title>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400&family=Merriweather:wght@700&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="./assests/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./assets/css/style.css" />
 </head>
 
 <body>
-    <div class="weather_dispay">
-        <input id="input_box" placeholder="data"/>
-        <button id="submit_btn"></button>
+    <div class="InputHeader">
+        <input id="input" placeholder="Enter your city name...."/>
+        <button id="submitbtn">search</button>
+        <button id="currentLocation">Current Location</button>
     </div>
-    <div id ="output_box">
+    <div id ="weatherDisplay">
+      <div id="skyIcon" class="icon"></div>
+      <div id="datetimedaydis"></div>
+      <!-- <div id="currentweather"> -->
+        <!-- <div id="upcomingweather"></div> -->
     </div>
- <script src="./assests/js/script.js"></script>
+     
+   
+ <script src="./assets/js/script.js"></script>
 </body>
 </html>
+
