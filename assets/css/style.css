@@ -27,25 +27,25 @@ html, body {
     margin-right: 3px;
     margin-top: 10px;
     padding: 5px;
-    background-color: none;
     height: 32px;
     border-radius: 12px;
-    border: 1px solid black;
-    /* color:black; */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 8px rgba(1, 41, 54, 0.8);
     font-size: 17px;
+    background: transparent;   /* no background color */
+    cursor: pointer;   
+    border: none;
 }#submitbtn{
     width:90px;
     font-size: 17px;
+   
 }
 #submitbtn:hover,
 #currentLocation:hover{
     background-color: none;
     height: 35px;
     border-radius: 12px;
-    border: 1px solid black;
     font-weight: bolder;
-    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
    
 }.currentweather{
     display: flex;
