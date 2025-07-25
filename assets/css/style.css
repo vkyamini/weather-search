@@ -226,8 +226,8 @@ html, body {
   }
   
   .pleasant {
-    background: linear-gradient(to bottom, #fdfbfb, #ebedee); /* light gray cloudlike */
-    color: #333333;
+    background: linear-gradient(to bottom, #90e6f1, #ebedee); /* light gray cloudlike */
+    color: #100261;
   }
   
   .warm {
