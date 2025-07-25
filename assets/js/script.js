@@ -214,11 +214,22 @@ function Fetchdetails(){
     return response.json();
   })
   .then(function (data) {
+    if(data.cod !== 200){
+      var errmes =data.message
+     
+      weatherDisplay.innerHTML =`<strong style="color: #e63946; font-size: 1rem; display: block; text-align: center; margin-top: 1rem;">
+     Oops!! ${errmes}, please try again
+     </strong>`;
+   
+       return;
+    }
+   
    console.log("current Obj for checking",data);
    UpdatecurrentObj(data);
    Displaycurrentweather(Obj)
-  }).catch(error=>{
-    return error.message;
+  }).catch(function (error) {
+    
+    console.error(error);
   });
 }
 function fetchForecast(){
@@ -239,18 +250,17 @@ function fetchForecast(){
 function Displaycurrentweather(Obj){
   if(Obj && Object.keys(Obj).length > 0){
     document.body.classList.remove("morning", "afternoon", "evening", "night"); // removes background color
-   
-       
-  
-      
         sky.innerHTML ="";
         datetimedaydis.innerHTML ="";
+        weatherDisplay.innerHTML ="";
         console.log("current Obj",Obj);
         weatherDisplay.append(currentweather);
        
-        var tempdata = Obj.temp
+        var tempdata = Obj.temp;
         let desc;
         let recommendations;
+
+       
 
         if (tempdata <= 0) {
           desc = "Freezing 🧊";
@@ -284,30 +294,32 @@ function Displaycurrentweather(Obj){
 
         currentweather.innerHTML = `
         <div class="weathercard">
-          <p><span class="cityname">${Obj.name},${Obj.country} </span><br> <span class="description">${Obj.description} - ${formattedTime}</span> </p>
-          <span id="displaysvg"></span>
-        
-
-          <div class="flexcol">
-              <div><p class="headingcard"> wind <br><img src="./images/wind.svg" alt="Wind" class="icon-svg" ></img> <span class="carddis">${(Obj.speed* 3.6).toFixed(1)} km/h</span></p></div>
-              <div id="trial"><p class="headingcard">Visibility <br><img src="./images/visibility.svg" alt="visibility" class="icon-svg" ></img> <span class="carddis">${(Obj.visibility / 1000).toFixed(1)}km</span></p></div>
-          </div>
-        
-          <div class="flexcol"> 
-            <div> <p class="headingcard">Air pressure <br><img src="./images/pressure.svg" alt="air" class="icon-svg" ></img><span class="carddis">${Obj.pressure} hPa</span></p></div>
-            <div id="humidty"> <p class="headingcard">Humidity <br><img src="./images/humidity.svg" alt="humidity" class="icon-svg" ></img><span class="carddis">${Obj.humidity} %</span></p></div>
-            <div id="temp">${Math.round(Obj.temp)}<span id="cel">°C</span></div>
-          </div>
+            <p><span class="cityname">${Obj.name},${Obj.country} </span><br> <span class="description">${Obj.description}</span> </p>
+            <span id="displaysvg"></span>
           
-         
-           <p>It's ${desc},${recommendations}</p>
-         
 
-          `
-    
-
+            <div class="flexcol">
+                <div><p class="headingcard"><span id="wh"> wind</span><br><img src="./images/wind.svg" alt="Wind" class="icon-svg" ></img> <span class="carddis">${(Obj.speed* 3.6).toFixed(1)}<span class="unitstyle">km/h</span> </span></p></div>
+                <div id="trial">
+                  <p class="headingcard"><span id="vh">Visibility</span> <br>
+                    <img src="./images/visibility.svg" alt="visibility" class="icon-svg" ></img> 
+                    <span class="carddis">${(Obj.visibility / 1000).toFixed(1)}</span><span class="unitstyle">km</span>
+                  </p>
+                </div>
+                <div id="temptrial"><p><strong>H: </strong>${Math.round(Obj.temp_max)}<span class="unitstyle">°C </span><br> <strong>L: </strong>${Math.round(Obj.temp_min)}<span class="unitstyle">°C </span> </p></div>
+            </div>
+          
+            <div class="flexcol"> 
+              <div> <p class="headingcard">Air pressure <br><img src="./images/pressure.svg" alt="air" class="icon-svg" ></img><span class="carddis">${Obj.pressure}<span class="unitstyle"> hPa</span></span></p></div>
+              <div id="humidty"> <p class="headingcard"><span id="hh">Humidity</span> <br><img src="./images/humidity.svg" alt="humidity" class="icon-svg" ></img><span class="carddis">${Obj.humidity}<span class="unitstyle"> %</span></span></p></div>
+              <div id="temp">${Math.round(Obj.temp)}<span id="cel" class="degree">°C</span><br></div>
+            </div>
+            <div class="recstyle">Feels Like ${Math.round(Obj.feels_like)}<span class="unitstyle">°C</span><br>It's ${desc} - ${recommendations}</div>
+        <div> `
   }
 }
+
+
 function Displayforecastweather(forecastObj){
   if(forecastObj && Object.keys(forecastObj).length > 0){
     document.body.classList.remove("morning", "afternoon", "evening", "night"); // removes background color

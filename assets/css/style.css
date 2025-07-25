@@ -13,30 +13,34 @@ html, body {
   
 }#input{
     margin: 10px;
-    width: 300px;
-    height: 30px;
-    border-radius: 12px;
+    width: 280px;
+    height: 20px;
+    border-radius: 10px;
     border: 1px solid black;
     color:black;
-    font-size: 17px;
+    /* font-size: 17px; */
     font-family: 'Merriweather', serif;
-   
+    background-color: transparent;
+    box-shadow: 0 0 8px rgba(1, 41, 54, 0.8);
 }#submitbtn,
 #currentLocation{
     font-family: 'Merriweather', serif;
+    font-style: bold;
     margin-right: 3px;
     margin-top: 10px;
-    padding: 5px;
-    height: 32px;
+    padding: 2px;
+    height: 22px;
     border-radius: 12px;
     box-shadow: 0 0 8px rgba(1, 41, 54, 0.8);
-    font-size: 17px;
+    /* font-size: 17px; */
     background: transparent;   /* no background color */
     cursor: pointer;   
     border: none;
+    /* color:white; */
 }#submitbtn{
     width:90px;
-    font-size: 17px;
+    /* font-size: 17px; */
+    padding: 2px;
    
 }
 #submitbtn:hover,
@@ -84,9 +88,26 @@ html, body {
     font-size:14px;
     font-family: 'Merriweather', serif;
     margin-left: 2px;
-}#trial{
-    margin-left: 30px;
-}#humidty{
+}.unitstyle{
+  font-size: 10px;
+}#wh{
+ margin-left: 16px;
+}#vh{
+  margin-left:8px;
+}#feelslike{
+  font-size: 10px;
+}
+#trial{
+    margin-left: 20px;
+}#temptrial{
+  margin-left: 50px;
+}.degree {
+  font-size: 24px;
+  vertical-align: super; /* aligns the °C nicely */
+  margin-left: 1px;
+}
+
+  #humidty{
     margin-left: 28px;
 }
 .carddis{
@@ -124,9 +145,12 @@ html, body {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    
-    background: rgb(207, 204, 204);
+    background:rgb(247, 247, 197);
     box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}.recstyle{
+ font-size:15px;
+ margin: 0;
+ font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
 }
 .datetimedaydis{
    text-align: center;
