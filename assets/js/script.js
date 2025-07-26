@@ -1,6 +1,3 @@
-// https://api.openweathermap.org/data/3.0/onecall?lat=40.7128&lon=-74.0060&exclude=minutely&uni
-// ts=metric&appid=YOUR_API_KEY
-
 
 let apik = "3045dd712ffe6e702e3245525ac7fa38"
 let apik2 = "1a7d50445be9f7e3f34e37489501e66c"
@@ -176,95 +173,52 @@ function UpdateForecastObj(data){
 
 }
 function updateAirQualityObj(data){
-  // AirQualityObj = {
-  //     type: data.request.type,
-  //     query: data.request.query,
-  //     language: data.request.language,
-  //     unit: data.request.unit,
-  //     name: data.location.name,
-  //     country: data.location.country,
-  //     region: data.location.region,
-  //     lat: data.location.lat,
-  //     lon: data.location.lon,
-  //     timezone_id: data.location.timezone_id,
-  //     localtime: data.location.localtime,
-  //     localtime_epoch: data.location.localtime_epoch,
-  //     utc_offset: data.location.utc_offset,
-  //     observation_time: data.current.observation_time,
-  //     temperature: data.current.temperature,
-  //     weather_code: data.current.weather_code,
-  //     weather_icons: data.current.weather_icons.join(", "),
-  //     weather_descriptions: data.current.weather_descriptions.join(", "),
-  //     sunrise: data.current.astro.sunrise,
-  //     sunset: data.current.astro.sunset,
-  //     moonrise: data.current.astro.moonrise,
-  //     moonset: data.current.astro.moonset,
-  //     moon_phase: data.current.astro.moon_phase,
-  //     moon_illumination: data.current.astro.moon_illumination,
-  //     co: data.current.air_quality.co,
-  //     no2: data.current.air_quality.no2,
-  //     o3: data.current.air_quality.o3,
-  //     so2: data.current.air_quality.so2,
-  //     pm2_5: data.current.air_quality.pm2_5,
-  //     pm10: data.current.air_quality.pm10,
-  //     // us_epa_index: data.current.air_quality.us-epa-index,
-  //     // gb_defra_index: data.current.air_quality.gb-defra-index,
-  //     wind_speed: data.current.wind_speed,
-  //     wind_degree: data.current.wind_degree,
-  //     wind_dir: data.current.wind_dir,
-  //     pressure: data.current.pressure,
-  //     precip: data.current.precip,
-  //     humidity: data.current.humidity,
-  //     cloudcover: data.current.cloudcover,
-  //     feelslike: data.current.feelslike,
-  //     uv_index: data.current.uv_index,
-  //     visibility: data.current.visibility,
-  //     is_day: data.current.is_day,
   AirQualityObj = {
-  type: "City",
-  query: "Brentwood, United States of America",
-  language: "en",
-  unit: "m",
-  name: "Brentwood",
-  country: "United States of America",
-  region: "New York",
-  lat: "40.781",
-  lon: "-73.247",
-  timezone_id: "America/New_York",
-  localtime: "2025-07-25 02:45",
-  localtime_epoch: 1753411500,
-  utc_offset: "-4.0",
-  observation_time: "06:45 AM",
-  temperature: 24,
-  weather_code: 113,
-  weather_icons: "https://cdn.worldweatheronline.com/images/wsymbols01_png_64/wsymbol_0008_clear_sky_night.png",
-  weather_descriptions: "Clear ",
-  sunrise: "05:44 AM",
-  sunset: "08:15 PM",
-  moonrise: "06:21 AM",
-  moonset: "09:09 PM",
-  moon_phase: "Waxing Crescent",
-  moon_illumination: 0,
-  co: "344.1",
-  no2: "21.09",
-  o3: "72",
-  so2: "7.77",
-  pm2_5: "18.13",
-  pm10: "19.425",
-  wind_speed: 18,
-  wind_degree: 235,
-  wind_dir: "SW",
-  pressure: 1017,
-  precip: 0,
-  humidity: 74,
-  cloudcover: 0,
-  feelslike: 26,
-  uv_index: 0,
-  visibility: 16,
-  is_day: "no"
-      
-};
-    
+      type: data.request.type,
+      query: data.request.query,
+      language: data.request.language,
+      unit: data.request.unit,
+      name: data.location.name,
+      country: data.location.country,
+      region: data.location.region,
+      lat: data.location.lat,
+      lon: data.location.lon,
+      timezone_id: data.location.timezone_id,
+      localtime: data.location.localtime,
+      localtime_epoch: data.location.localtime_epoch,
+      utc_offset: data.location.utc_offset,
+      observation_time: data.current.observation_time,
+      temperature: data.current.temperature,
+      weather_code: data.current.weather_code,
+      weather_icons: data.current.weather_icons.join(", "),
+      weather_descriptions: data.current.weather_descriptions.join(", "),
+      sunrise: data.current.astro.sunrise,
+      sunset: data.current.astro.sunset,
+      moonrise: data.current.astro.moonrise,
+      moonset: data.current.astro.moonset,
+      moon_phase: data.current.astro.moon_phase,
+      moon_illumination: data.current.astro.moon_illumination,
+      co: data.current.air_quality.co,
+      no2: data.current.air_quality.no2,
+      o3: data.current.air_quality.o3,
+      so2: data.current.air_quality.so2,
+      pm2_5: data.current.air_quality.pm2_5,
+      pm10: data.current.air_quality.pm10,
+      // us_epa_index: data.current.air_quality.us-epa-index,
+      // gb_defra_index: data.current.air_quality.gb-defra-index,
+      wind_speed: data.current.wind_speed,
+      wind_degree: data.current.wind_degree,
+      wind_dir: data.current.wind_dir,
+      pressure: data.current.pressure,
+      precip: data.current.precip,
+      humidity: data.current.humidity,
+      cloudcover: data.current.cloudcover,
+      feelslike: data.current.feelslike,
+      uv_index: data.current.uv_index,
+      visibility: data.current.visibility,
+      is_day: data.current.is_day,
+  
+}
 }
 submitBtn.addEventListener("click",()=>{
   query = inputBox.value.trim();
@@ -349,59 +303,16 @@ function fetchForecast(){
 
 function airquality(){
   console.log("click air quality");
-  //     fetch(`https://api.weatherstack.com/current?access_key=${apik2}&query=${query}`)
-  //   .then(function (response) {
-  //   return response.json();
-  // })
-  // .then(function (data) {
-  //  console.log("from second API",data);
-  //  updateAirQualityObj(data);
-  //  console.log(AirQualityObj);
+      fetch(`https://api.weatherstack.com/current?access_key=${apik2}&query=${query}`)
+    .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+   console.log("from second API",data);
+   updateAirQualityObj(data);
+   console.log(AirQualityObj);
 
-  AirQualityObj = {
-    type: "City",
-    query: "Brentwood, United States of America",
-    language: "en",
-    unit: "m",
-    name: "Brentwood",
-    country: "United States of America",
-    region: "New York",
-    lat: "40.781",
-    lon: "-73.247",
-    timezone_id: "America/New_York",
-    localtime: "2025-07-25 02:45",
-    localtime_epoch: 1753411500,
-    utc_offset: "-4.0",
-    observation_time: "06:45 AM",
-    temperature: 24,
-    weather_code: 113,
-    weather_icons: "https://cdn.worldweatheronline.com/images/wsymbols01_png_64/wsymbol_0008_clear_sky_night.png",
-    weather_descriptions: "Clear ",
-    sunrise: "05:44 AM",
-    sunset: "08:15 PM",
-    moonrise: "06:21 AM",
-    moonset: "09:09 PM",
-    moon_phase: "Waxing Crescent",
-    moon_illumination: 0,
-    co: "344.1",
-    no2: "21.09",
-    o3: "72",
-    so2: "7.77",
-    pm2_5: "18.13",
-    pm10: "19.425",
-    wind_speed: 18,
-    wind_degree: 235,
-    wind_dir: "SW",
-    pressure: 1017,
-    precip: 0,
-    humidity: 74,
-    cloudcover: 0,
-    feelslike: 26,
-    uv_index: 0,
-    visibility: 16,
-    is_day: "no"
-        
-  };
+  
 
    weatherDisplay.removeChild(airQualityBtn);
    weatherDisplay.append(airqualitySectiondiv);
@@ -511,14 +422,9 @@ function airquality(){
    </div>
   <p  id="airqualitycardadvice">1.${airEmoji}${airAdvice}<br><br>2.${rec}</p> 
   `;
-
-  
-
-
-
-//   }).catch(function(error){
-//     console.log("this is data",error);
-//   })
+  }).catch(function(error){
+     console.log("this is data",error);
+   })
 }
 function Displaycurrentweather(Obj){
   
