@@ -1,8 +1,7 @@
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding: 0;
+}
 .InputHeader{
     text-align: center;
     padding: 20px;
@@ -42,6 +41,23 @@ html, body {
     /* font-size: 17px; */
     padding: 2px;
    
+}.airQualityBtn{
+  display: block;
+  margin:1px auto;
+  position: relative;
+  width:360px;
+  margin-top: 10px;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border: none;
+  font-size: 18px;
+}.airQualityBtn:hover{
+  font-size: 20px;
+  cursor: pointer;
+  width:370px;
 }
 #submitbtn:hover,
 #currentLocation:hover{
@@ -51,13 +67,55 @@ html, body {
     font-weight: bolder;
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.4);
    
-}.currentweather{
+}.currentweather,
+.upcomingweather{
     display: flex;
     flex-direction:column;
     gap: 1rem;
     align-items: center;
    
-}.weathercard{
+}#upcomingweathercard{
+  margin-top: 10px;
+  margin-bottom: 0px;
+  display: flex;
+  padding: 15px;
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  width: 330px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+.scroll-container {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+.forecast-item {
+  flex: 0 0 auto;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  padding: 10px;
+  text-align: center;
+  min-width: 70px;
+  font-family: 'Merriweather', serif;
+}
+.daily-grid {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem auto;
+  flex-wrap: wrap;
+}
+
+.daily-item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+  text-align: center;
+  width: 90px;
+}
+.weathercard
+{
   display: flex;
   flex-direction:column;
   background: rgba(255, 255, 255, 0.15);
@@ -67,9 +125,60 @@ html, body {
   /* text-align: center; */
   /* color: black; */
   width: 300px;
-  height:300px;
+  
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-}.cityname{
+}
+.astrodiv{
+  display: flex;
+  flex-direction:column;
+  gap: 1rem;
+  align-items: center;
+}
+.astro{
+  display: flex;
+  flex-direction:column;
+  margin-top: 5px;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 5px;
+  align-items: center;
+  /* color: black; */
+  width: 350px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}#astrosunset{
+  margin-left: 57px;
+}
+#astromoonset{
+  margin-left: 36px;
+}
+.airqualitySectiondiv{
+  display: flex;
+  flex-direction:column;
+  gap: 1rem;
+  align-items: center;
+
+}
+#airqualitycard{
+  margin-top: 10px;
+  margin-bottom: 0px;
+  display: flex;
+  padding: 15px;
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  width: 330px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}#airqualitycardadvice{
+  margin-top: 0;
+  display: flex;
+  border-radius: 20px;
+  width: 330px;
+  padding: 15px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  
+}
+.cityname{
     /* color: black; */
     font-size:20px;
     font-weight: bold;
@@ -107,7 +216,11 @@ html, body {
   margin-left: 1px;
 }
 
-  #humidty{
+#NO2,#O3,#SO2,#PM10,#PM25,#UV{
+  padding-left: 6px;
+  border-left: 1px solid black;
+}
+#humidty{
     margin-left: 28px;
 }
 .carddis{
@@ -206,7 +319,7 @@ html, body {
     to { transform: rotate(360deg); }
   }
 
-  @keyframes pulse {
+@keyframes pulse {
     from { opacity: 0.7; transform: scale(1); }
     to { opacity: 1; transform: scale(1.1); }
   }
@@ -214,32 +327,26 @@ html, body {
     background: linear-gradient(to bottom, #74ebd5, #ACB6E5); /* icy electric blue */
     color:#93291e;
   }
-  
   .cold {
     background: linear-gradient(to bottom, #2980b9, #6dd5fa); /* deep blue to bright sky */
     color: #ffffff;
   }
-  
   .coolt {
     background: linear-gradient(to bottom, #43cea2, #185a9d); /* teal + ocean blue */
     color: #ffffff;
   }
-  
-  .pleasant {
+ .pleasant {
     background: linear-gradient(to bottom, #90e6f1, #ebedee); /* light gray cloudlike */
     color: #100261;
   }
-  
   .warm {
     background: linear-gradient(to bottom, #f7971e, #ffd200); /* golden orange burst */
     color: #4a1f00;
   }
-  
   .hot {
     background: linear-gradient(to bottom, #f12711, #f5af19); /* fire orange to gold */
     color: #fff0e6;
   }
-  
   .xhot {
     background: linear-gradient(to bottom, #93291e, #ed213a); /* lava red danger */
     color: #ffffff;

@@ -3,21 +3,29 @@
 
 
 let apik = "3045dd712ffe6e702e3245525ac7fa38"
-
+let apik2 = "1a7d50445be9f7e3f34e37489501e66c"
+let url = "https://api.weatherstack.com/current?access_key=${apik}&query=${query}";
 var datetimedaydis = document.getElementById('datetimedaydis');
 var sky = document.getElementById('skyIcon');
 var submitBtn = document.querySelector('#submitbtn');
 var inputBox = document.querySelector('#input')
 var weatherDisplay = document.querySelector('#weatherDisplay');
+var astro = document.createElement('div');
 var currentweather = document.createElement('div');
 var upcomingweather = document.createElement('div');
+var airQualityBtn = document.createElement('button');
+var airqualitySectiondiv = document.createElement('div');//////
 
 var currentLocation = document.getElementById('currentLocation');
 datetimedaydis.classList.add('datetimedaydis');
 currentweather.classList.add('currentweather');
-upcomingweather.classList.add('currentweather');
+upcomingweather.classList.add('upcomingweather');
+airQualityBtn.classList.add('airQualityBtn');
+
+let forecastrawdata;
 let Obj;
 let forecastObj;
+let AirQualityObj;
 let query;
 let hour;
 let formattedTime;
@@ -167,6 +175,97 @@ function UpdateForecastObj(data){
    }
 
 }
+function updateAirQualityObj(data){
+  // AirQualityObj = {
+  //     type: data.request.type,
+  //     query: data.request.query,
+  //     language: data.request.language,
+  //     unit: data.request.unit,
+  //     name: data.location.name,
+  //     country: data.location.country,
+  //     region: data.location.region,
+  //     lat: data.location.lat,
+  //     lon: data.location.lon,
+  //     timezone_id: data.location.timezone_id,
+  //     localtime: data.location.localtime,
+  //     localtime_epoch: data.location.localtime_epoch,
+  //     utc_offset: data.location.utc_offset,
+  //     observation_time: data.current.observation_time,
+  //     temperature: data.current.temperature,
+  //     weather_code: data.current.weather_code,
+  //     weather_icons: data.current.weather_icons.join(", "),
+  //     weather_descriptions: data.current.weather_descriptions.join(", "),
+  //     sunrise: data.current.astro.sunrise,
+  //     sunset: data.current.astro.sunset,
+  //     moonrise: data.current.astro.moonrise,
+  //     moonset: data.current.astro.moonset,
+  //     moon_phase: data.current.astro.moon_phase,
+  //     moon_illumination: data.current.astro.moon_illumination,
+  //     co: data.current.air_quality.co,
+  //     no2: data.current.air_quality.no2,
+  //     o3: data.current.air_quality.o3,
+  //     so2: data.current.air_quality.so2,
+  //     pm2_5: data.current.air_quality.pm2_5,
+  //     pm10: data.current.air_quality.pm10,
+  //     // us_epa_index: data.current.air_quality.us-epa-index,
+  //     // gb_defra_index: data.current.air_quality.gb-defra-index,
+  //     wind_speed: data.current.wind_speed,
+  //     wind_degree: data.current.wind_degree,
+  //     wind_dir: data.current.wind_dir,
+  //     pressure: data.current.pressure,
+  //     precip: data.current.precip,
+  //     humidity: data.current.humidity,
+  //     cloudcover: data.current.cloudcover,
+  //     feelslike: data.current.feelslike,
+  //     uv_index: data.current.uv_index,
+  //     visibility: data.current.visibility,
+  //     is_day: data.current.is_day,
+  AirQualityObj = {
+  type: "City",
+  query: "Brentwood, United States of America",
+  language: "en",
+  unit: "m",
+  name: "Brentwood",
+  country: "United States of America",
+  region: "New York",
+  lat: "40.781",
+  lon: "-73.247",
+  timezone_id: "America/New_York",
+  localtime: "2025-07-25 02:45",
+  localtime_epoch: 1753411500,
+  utc_offset: "-4.0",
+  observation_time: "06:45 AM",
+  temperature: 24,
+  weather_code: 113,
+  weather_icons: "https://cdn.worldweatheronline.com/images/wsymbols01_png_64/wsymbol_0008_clear_sky_night.png",
+  weather_descriptions: "Clear ",
+  sunrise: "05:44 AM",
+  sunset: "08:15 PM",
+  moonrise: "06:21 AM",
+  moonset: "09:09 PM",
+  moon_phase: "Waxing Crescent",
+  moon_illumination: 0,
+  co: "344.1",
+  no2: "21.09",
+  o3: "72",
+  so2: "7.77",
+  pm2_5: "18.13",
+  pm10: "19.425",
+  wind_speed: 18,
+  wind_degree: 235,
+  wind_dir: "SW",
+  pressure: 1017,
+  precip: 0,
+  humidity: 74,
+  cloudcover: 0,
+  feelslike: 26,
+  uv_index: 0,
+  visibility: 16,
+  is_day: "no"
+      
+};
+    
+}
 submitBtn.addEventListener("click",()=>{
   query = inputBox.value.trim();
   if (query !== "") {
@@ -239,6 +338,8 @@ function fetchForecast(){
     return response.json();
   })
   .then(function (data) {
+   console.log("forecast Obj for checking",data);
+   forecastrawdata = data;
    UpdateForecastObj(data);
    Displayforecastweather(forecastObj)
   }).catch(error=>{
@@ -246,8 +347,181 @@ function fetchForecast(){
   });
 }
 
+function airquality(){
+  console.log("click air quality");
+  //     fetch(`https://api.weatherstack.com/current?access_key=${apik2}&query=${query}`)
+  //   .then(function (response) {
+  //   return response.json();
+  // })
+  // .then(function (data) {
+  //  console.log("from second API",data);
+  //  updateAirQualityObj(data);
+  //  console.log(AirQualityObj);
 
+  AirQualityObj = {
+    type: "City",
+    query: "Brentwood, United States of America",
+    language: "en",
+    unit: "m",
+    name: "Brentwood",
+    country: "United States of America",
+    region: "New York",
+    lat: "40.781",
+    lon: "-73.247",
+    timezone_id: "America/New_York",
+    localtime: "2025-07-25 02:45",
+    localtime_epoch: 1753411500,
+    utc_offset: "-4.0",
+    observation_time: "06:45 AM",
+    temperature: 24,
+    weather_code: 113,
+    weather_icons: "https://cdn.worldweatheronline.com/images/wsymbols01_png_64/wsymbol_0008_clear_sky_night.png",
+    weather_descriptions: "Clear ",
+    sunrise: "05:44 AM",
+    sunset: "08:15 PM",
+    moonrise: "06:21 AM",
+    moonset: "09:09 PM",
+    moon_phase: "Waxing Crescent",
+    moon_illumination: 0,
+    co: "344.1",
+    no2: "21.09",
+    o3: "72",
+    so2: "7.77",
+    pm2_5: "18.13",
+    pm10: "19.425",
+    wind_speed: 18,
+    wind_degree: 235,
+    wind_dir: "SW",
+    pressure: 1017,
+    precip: 0,
+    humidity: 74,
+    cloudcover: 0,
+    feelslike: 26,
+    uv_index: 0,
+    visibility: 16,
+    is_day: "no"
+        
+  };
+
+   weatherDisplay.removeChild(airQualityBtn);
+   weatherDisplay.append(airqualitySectiondiv);
+   weatherDisplay.append(astro);
+   airqualitySectiondiv.classList.add('airqualitySectiondiv');
+   astro.classList.add('astrodiv')
+
+    const pm25 = parseFloat(AirQualityObj.pm2_5);
+    let airEmoji = "";
+    let airAdvice = "";
+    let rec;
+   
+    if (pm25 <= 12) {
+      airEmoji = "✅";
+      airAdvice = "Air quality is good. Enjoy the fresh air!";
+      } else if (pm25 <= 35) {
+      airEmoji = "⚠️";
+      airAdvice = "Moderate air quality.It is recommended to limit long exposure.";
+      } else if (pm25 <= 55) {
+      airEmoji = "😷";
+      airAdvice = "Unhealthy for sensitive groups. Limit outdoor activities.";
+      } else if (pm25 <= 150) {
+      airEmoji = "☠️";
+      airAdvice = "Unhealthy air — best to stay indoors.";
+      } else {
+      airEmoji = "🛑";
+      airAdvice = "Very unhealthy! Stay inside and wear a mask if you must go out.";
+      }
+      const limits = {
+        co: 9,
+        no2: 53,
+        o3: 100,
+        so2: 75,
+        pm2_5: 12,
+        pm10: 50,
+       
+      };
+
+      function colorText(value, limit) {
+        const num = parseFloat(value);
+        if (num > limit) {
+          return `<span style="color: red;">${num}</span>`;
+        } else {
+          return `<span style="color: green;">${num}</span>`;
+        }
+      }
+      function UV(value){
+        const num = parseFloat(value);
+          if (num <= 2) {
+            rec = "UVI - Minimal risk, safe to be outdoors - Wear sunglasses if bright";
+            return `<span style="color:rgb(4, 2, 120);"> ${num}-L</span>`; // Green
+          } else if (num <= 5) {
+            rec = "UVI - ⚠️ Moderate risk of harm - 	Use SPF 30+, seek shade at midday";
+            return `<span style="color:rgb(85, 87, 2);"> ${num}-M</span>`; // Yellow
+          } else if (num <= 7) {
+            rec = "UVI - 🔶 Increased risk of skin damage - Reduce sun exposure, wear hat/sunglasses";
+            return `<span style="color: #e67e22;"> ${num}-H</span>`; // Orange
+          } else if (num <= 10) {
+            rec = "UVI - 🔴 Serious risk, quick skin damage - Stay in shade, SPF 50+, wear full protection";
+            return `<span style="color: #e74c3c;"> ${num}-VH</span>`; // Red
+          } else {
+            rec = "UVI - ☠️ Dangerous exposure -	Avoid the sun completely if possible";
+            return `<span style="color:rgb(255, 0, 0);"> ${num}-EX</span>`; // Purple
+          }
+      }
+
+      const moonPhaseEmojis = {
+        "New Moon": "🌑",
+        "Waxing Crescent": "🌒",
+        "First Quarter": "🌓",
+        "Waxing Gibbous": "🌔",
+        "Full Moon": "🌕",
+        "Waning Gibbous": "🌖",
+        "Last Quarter": "🌗",
+        "Waning Crescent": "🌘"
+      };
+      const moonPhase = AirQualityObj.moon_phase;
+      const moonEmoji = moonPhaseEmojis[moonPhase] || "🌙";
+
+   airqualitySectiondiv.innerHTML = `
+   <div id="airqualitycard"> 
+ 
+      <p id="CO">CO ${colorText(AirQualityObj.co, limits.co)}</p>
+      <p id="NO2">NO₂ ${colorText(AirQualityObj.no2, limits.no2)}</p>
+      <p id="PM25">PM₂₅ ${colorText(AirQualityObj.pm2_5, limits.pm2_5)}</p>
+      <p id="PM10">PM₁₀ ${colorText(AirQualityObj.pm10, limits.pm10)}</p>
+      <p id="SO2">SO₂ ${colorText(AirQualityObj.so2, limits.so2)}</p>
+      <p id="O3">O₃ ${colorText(AirQualityObj.o3, limits.o3)}</p>
+      <p id="UV">UV ${UV(AirQualityObj.uv_index)}</p>
+  </div>
+  `;
+   astro.innerHTML = `
+   <div class= "astro">
+   <p>
+   <span><img src="./images/sunrise.svg" alt="sunrise" class="icon-svg" >
+   </img>Sunrise: ${AirQualityObj.sunrise}</span>
+   <span id="astrosunset"><img src="./images/sunset.svg" alt="sunrise" class="icon-svg" >
+   </img> Sunset: ${AirQualityObj.sunset}</span><br>
+   <span><img src="./images/moonrise.svg" alt="moonrise" class="icon-svg" >
+   </img>MoonRise: ${AirQualityObj.moonrise}</span>
+   <span id="astromoonset"><img src="./images/moonset.svg" alt="moonset" class="icon-svg" >
+   </img>MoonSet: ${AirQualityObj.moonset}</span><br><br>
+   <span>It's ${moonEmoji}${AirQualityObj.moon_phase} phase</span>
+   <span id="MoonIllumination">with Illumination of ${AirQualityObj.moon_illumination}%</span>
+
+   </p>
+   </div>
+  <p  id="airqualitycardadvice">1.${airEmoji}${airAdvice}<br>2.${rec}</p> 
+  `;
+
+  
+
+
+
+//   }).catch(function(error){
+//     console.log("this is data",error);
+//   })
+}
 function Displaycurrentweather(Obj){
+  
   if(Obj && Object.keys(Obj).length > 0){
     document.body.classList.remove("morning", "afternoon", "evening", "night"); // removes background color
         sky.innerHTML ="";
@@ -255,18 +529,17 @@ function Displaycurrentweather(Obj){
         weatherDisplay.innerHTML ="";
         console.log("current Obj",Obj);
         weatherDisplay.append(currentweather);
+      
        
         var tempdata = Obj.temp;
         let desc;
         let recommendations;
 
-       
-
         if (tempdata <= 0) {
           desc = "Freezing 🧊";
           recommendations = "🚫 Do not go out — it's freezing cold. Stay warm indoors!";
           document.body.classList.add("freezing");
-      } else if (tempdata <= 11) {
+        } else if (tempdata <= 11) {
           desc = "Cold 🥶";
           recommendations = "Dress warmly with layers. A hot drink might help!";
           document.body.classList.add("cold");
@@ -296,9 +569,7 @@ function Displaycurrentweather(Obj){
         <div class="weathercard">
             <p><span class="cityname">${Obj.name},${Obj.country} </span><br> <span class="description">${Obj.description}</span> </p>
             <span id="displaysvg"></span>
-          
-
-            <div class="flexcol">
+          <div class="flexcol">
                 <div><p class="headingcard"><span id="wh"> wind</span><br><img src="./images/wind.svg" alt="Wind" class="icon-svg" ></img> <span class="carddis">${(Obj.speed* 3.6).toFixed(1)}<span class="unitstyle">km/h</span> </span></p></div>
                 <div id="trial">
                   <p class="headingcard"><span id="vh">Visibility</span> <br>
@@ -315,10 +586,30 @@ function Displaycurrentweather(Obj){
               <div id="temp">${Math.round(Obj.temp)}<span id="cel" class="degree">°C</span><br></div>
             </div>
             <div class="recstyle">Feels Like ${Math.round(Obj.feels_like)}<span class="unitstyle">°C</span><br>It's ${desc} - ${recommendations}</div>
-        <div> `
-  }
+         </div>
+        `
+        
+        
+        airQualityBtn.addEventListener("click",()=>{
+          airquality()
+        });
+      }
 }
 
+function getWeatherEmoji(iconCode) {
+const map = {
+  "01d": "☀️", "01n": "🌙",
+  "02d": "🌤️", "02n": "🌤️",
+  "03d": "☁️", "03n": "☁️",
+  "04d": "☁️", "04n": "☁️",
+  "09d": "🌧️", "09n": "🌧️",
+  "10d": "🌦️", "10n": "🌧️",
+  "11d": "⛈️", "11n": "⛈️",
+  "13d": "❄️", "13n": "❄️",
+  "50d": "🌫️", "50n": "🌫️"
+};
+return map[iconCode] || "❓";
+}
 
 function Displayforecastweather(forecastObj){
   if(forecastObj && Object.keys(forecastObj).length > 0){
@@ -326,12 +617,70 @@ function Displayforecastweather(forecastObj){
     sky.innerHTML ="";
     datetimedaydis.innerHTML ="";
     console.log("forecast Obj",forecastObj);
-   
+    console.log("forecastrawdata",forecastrawdata);
+    weatherDisplay.append(upcomingweather);
+    upcomingweather.innerHTML = `
+   <div id="upcomingweathercard" class="scroll-container"></div>
+   <div id="dailyForecast" class="daily-grid"></div>
+   <div id="airqualitySection"></div>
+    `;
+
+    const container = document.getElementById("upcomingweathercard");
+
+      for (let i = 0; i < 8; i++) {
+        const item = forecastrawdata.list[i]; // assuming `forecastrawdata` is global and available
+        const dt = new Date(item.dt * 1000);
+        const hour = dt.getHours();
+        const timeLabel = i === 0 ? "Now" : `${hour % 12 || 12}${hour >= 12 ? 'PM' : 'AM'}`;
+        const emoji = getWeatherEmoji(item.weather[0].icon);
+        const temp = Math.round(item.main.temp);
+        const pop = Math.round((item.pop || 0) * 100);
+
+        const div = document.createElement("div");
+        div.className = "forecast-item";
+        div.innerHTML = `
+          <div>${timeLabel}</div>
+          <div style="font-size: 24px;">${emoji}${temp}°</div>
+          <div>${pop}%</div>
+        `;
+        container.appendChild(div);
+        }
+
+        const dailyContainer = document.getElementById("dailyForecast");
+    const dailyMap = {};
+    forecastrawdata.list.forEach(item => {
+      const [dateStr, timeStr] = item.dt_txt.split(" ");
+      if (timeStr === "12:00:00" && !dailyMap[dateStr]) {
+        dailyMap[dateStr] = item;
+      }
+    });
+
+    const dates = Object.keys(dailyMap).slice(0, 3);
+    dates.forEach(dateStr => {
+      const item = dailyMap[dateStr];
+      const date = new Date(item.dt * 1000);
+      const day = date.toLocaleDateString("en-US", { weekday: "short" });
+      const emoji = getWeatherEmoji(item.weather[0].icon);
+      const temp = Math.round(item.main.temp);
+      const pop = Math.round((item.pop || 0) * 100);
+
+      const div = document.createElement("div");
+      div.className = "daily-item";
+      div.innerHTML = `
+        <div>${day}</div>
+        <div style="font-size: 24px;">${emoji}${temp}°</div>
+        <div>${pop}%</div>
+      `;
+      dailyContainer.appendChild(div);
+    });
+  
+        weatherDisplay.append(airQualityBtn);
+        airQualityBtn.textContent = "More Info"
   }
+
+
+
 }
-
-
-
 
 
 
