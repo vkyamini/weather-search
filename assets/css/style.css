@@ -1,6 +1,7 @@
 html, body {
   margin: 0;
   padding: 0;
+  
 }
 .InputHeader{
     text-align: center;
@@ -83,6 +84,11 @@ html, body {
   border-radius: 20px;
   width: 330px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}#dailyForecast{
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  padding: 10px;
+  width:350px;
 }
 .scroll-container {
   display: flex;
@@ -99,20 +105,12 @@ html, body {
   min-width: 70px;
   font-family: 'Merriweather', serif;
 }
-.daily-grid {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  margin: 1rem auto;
-  flex-wrap: wrap;
-}
-
 .daily-item {
   background: rgba(255, 255, 255, 0.1);
   border-radius: 12px;
   padding: 12px;
   text-align: center;
-  width: 90px;
+  width: 120px;
 }
 .weathercard
 {
@@ -138,12 +136,14 @@ html, body {
   display: flex;
   flex-direction:column;
   margin-top: 5px;
+  margin-bottom: 30px;
   background: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(12px);
   border-radius: 20px;
-  padding: 5px;
+  padding: 18px;
   align-items: center;
-  /* color: black; */
+  font-family: 'Merriweather', serif;
+  font-size:14px;
   width: 350px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }#astrosunset{
@@ -161,9 +161,10 @@ html, body {
 }
 #airqualitycard{
   margin-top: 10px;
-  margin-bottom: 0px;
+  margin-bottom: 30px;
   display: flex;
-  padding: 15px;
+  padding: 25px;
+  font-size: 18px;
   backdrop-filter: blur(12px);
   border-radius: 20px;
   width: 330px;
@@ -173,9 +174,11 @@ html, body {
   display: flex;
   border-radius: 20px;
   width: 330px;
-  padding: 15px;
+  padding: 25px;
   backdrop-filter: blur(12px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  font-family: 'Merriweather', serif;
+  font-size: 15px;
   
 }
 .cityname{
@@ -277,19 +280,31 @@ html, body {
 .morning {
     background: linear-gradient(to bottom, #a1c4fd, #c2e9fb); /* clear sky blue */
     color: #0410f5;
+    background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .afternoon {
     background: linear-gradient(to bottom, #ffe29f, #ffa99f); /* peach sunrise */
     color: #fb6705;
+    background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .evening {
     background: linear-gradient(to bottom, #fbc2eb, #a6c1ee); /* pink-purple dusk */
     color: #020489;
+    background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
    
 }
 .night {
     background: linear-gradient(to bottom, #0f2027, #203a43, #2c5364);
     color:rgb(200, 158, 247);
+    background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .center-svg {
     display: block;

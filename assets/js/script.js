@@ -449,9 +449,10 @@ function airquality(){
         }
       }
       function UV(value){
+        var UVimg = "./images/sunset.svg";
         const num = parseFloat(value);
           if (num <= 2) {
-            rec = "UVI - Minimal risk, safe to be outdoors - Wear sunglasses if bright";
+            rec = "UVI - 🟢🧢 Minimal risk, safe to be outdoors - Wear sunglasses if bright";
             return `<span style="color:rgb(4, 2, 120);"> ${num}-L</span>`; // Green
           } else if (num <= 5) {
             rec = "UVI - ⚠️ Moderate risk of harm - 	Use SPF 30+, seek shade at midday";
@@ -499,17 +500,16 @@ function airquality(){
    <span><img src="./images/sunrise.svg" alt="sunrise" class="icon-svg" >
    </img>Sunrise: ${AirQualityObj.sunrise}</span>
    <span id="astrosunset"><img src="./images/sunset.svg" alt="sunrise" class="icon-svg" >
-   </img> Sunset: ${AirQualityObj.sunset}</span><br>
+   </img> Sunset: ${AirQualityObj.sunset}</span><br><br>
    <span><img src="./images/moonrise.svg" alt="moonrise" class="icon-svg" >
    </img>MoonRise: ${AirQualityObj.moonrise}</span>
    <span id="astromoonset"><img src="./images/moonset.svg" alt="moonset" class="icon-svg" >
    </img>MoonSet: ${AirQualityObj.moonset}</span><br><br>
    <span>It's ${moonEmoji}${AirQualityObj.moon_phase} phase</span>
    <span id="MoonIllumination">with Illumination of ${AirQualityObj.moon_illumination}%</span>
-
    </p>
    </div>
-  <p  id="airqualitycardadvice">1.${airEmoji}${airAdvice}<br>2.${rec}</p> 
+  <p  id="airqualitycardadvice">1.${airEmoji}${airAdvice}<br><br>2.${rec}</p> 
   `;
 
   
@@ -621,7 +621,7 @@ function Displayforecastweather(forecastObj){
     weatherDisplay.append(upcomingweather);
     upcomingweather.innerHTML = `
    <div id="upcomingweathercard" class="scroll-container"></div>
-   <div id="dailyForecast" class="daily-grid"></div>
+   <div id="dailyForecast" class="scroll-container"></div>
    <div id="airqualitySection"></div>
     `;
 
@@ -641,39 +641,43 @@ function Displayforecastweather(forecastObj){
         div.innerHTML = `
           <div>${timeLabel}</div>
           <div style="font-size: 24px;">${emoji}${temp}°</div>
-          <div>${pop}%</div>
+          <div>P - ${pop}%</div>
         `;
         container.appendChild(div);
         }
 
-        const dailyContainer = document.getElementById("dailyForecast");
-    const dailyMap = {};
-    forecastrawdata.list.forEach(item => {
-      const [dateStr, timeStr] = item.dt_txt.split(" ");
-      if (timeStr === "12:00:00" && !dailyMap[dateStr]) {
-        dailyMap[dateStr] = item;
-      }
-    });
+    const dailyContainer = document.getElementById("dailyForecast");
 
-    const dates = Object.keys(dailyMap).slice(0, 3);
-    dates.forEach(dateStr => {
-      const item = dailyMap[dateStr];
-      const date = new Date(item.dt * 1000);
-      const day = date.toLocaleDateString("en-US", { weekday: "short" });
-      const emoji = getWeatherEmoji(item.weather[0].icon);
-      const temp = Math.round(item.main.temp);
-      const pop = Math.round((item.pop || 0) * 100);
+          const dailyMap = {};
+          forecastrawdata.list.forEach(item => {
+            const [dateStr, timeStr] = item.dt_txt.split(" ");
+            if (timeStr === "12:00:00" && !dailyMap[dateStr]) {
+              dailyMap[dateStr] = item;
+            }
+          });
 
-      const div = document.createElement("div");
-      div.className = "daily-item";
-      div.innerHTML = `
-        <div>${day}</div>
-        <div style="font-size: 24px;">${emoji}${temp}°</div>
-        <div>${pop}%</div>
-      `;
-      dailyContainer.appendChild(div);
-    });
-  
+        const dates = Object.keys(dailyMap).slice(0, 5);
+        dates.forEach(dateStr => {
+          const item = dailyMap[dateStr];
+          const date = new Date(item.dt * 1000);
+          const day = date.toLocaleDateString("en-US", { weekday: "short" });
+          const emoji = getWeatherEmoji(item.weather[0].icon);
+          const temp = Math.round(item.main.temp);
+          const tempmax = Math.round(item.main.temp_max);
+          const tempmin = Math.round(item.main.temp_min);
+          const pop = Math.round((item.pop || 0) * 100);
+
+          const div = document.createElement("div");
+          div.className = "forecast-item";
+          div.innerHTML = `
+            <div>${day}</div>
+            <div style="font-size: 24px;">${emoji}${temp}°</div>
+            <div style="font-size: 12px;">H:${tempmax}°&nbsp;&nbsp;L:${tempmin}°</div>
+            <div>P - ${pop}%</div>
+          `;
+          dailyContainer.appendChild(div);
+        });
+   
         weatherDisplay.append(airQualityBtn);
         airQualityBtn.textContent = "More Info"
   }
