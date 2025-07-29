@@ -45,6 +45,7 @@ html, body {
 }.airQualityBtn{
   display: block;
   margin:1px auto;
+  margin-bottom: 10px;
   position: relative;
   width:360px;
   margin-top: 10px;
